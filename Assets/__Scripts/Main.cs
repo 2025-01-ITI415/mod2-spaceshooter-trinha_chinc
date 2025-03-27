@@ -20,7 +20,9 @@ public class Main : MonoBehaviour
     public WeaponDefinition[] weaponDefinitions;
     public eWeaponType[] powerUpFrequency = new eWeaponType[] {        
                                      eWeaponType.blaster, eWeaponType.blaster,
-                                     eWeaponType.spread,  eWeaponType.shield };
+                                     eWeaponType.spread,  eWeaponType.shield,
+                                     eWeaponType.laser, eWeaponType.phaser,
+                                     eWeaponType.missile};
     private BoundsCheck bndCheck;
 
     void Awake()
