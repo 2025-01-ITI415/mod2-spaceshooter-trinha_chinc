@@ -12,6 +12,8 @@ public class ProjectileHero : MonoBehaviour
     public Rigidbody rigid;
     [SerializeField]                                                         // a
     private eWeaponType _type;
+    public Transform target; // target for homing
+    public float homingStrength = 5f; // how agressively it homes into the target
 
 
     // This public property masks the private field _type
@@ -48,7 +50,16 @@ public class ProjectileHero : MonoBehaviour
         WeaponDefinition def = Main.GET_WEAPON_DEFINITION(_type);
         rend.material.color = def.projectileColor;
     }
-
+    private void FixedUpdate()
+    {
+        if (_type == eWeaponType.missile && target != null)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            Vector3 newVelocity = Vector3.Lerp(rigid.velocity, direction * rigid.velocity.magnitude, Time.fixedDeltaTime * homingStrength);
+            rigid.velocity = newVelocity;
+            transform.LookAt(target);
+        }
+    }
     /// <summary>
     /// Allows Weapon to easily set the velocity of this ProjectileHero
     /// </summary>
