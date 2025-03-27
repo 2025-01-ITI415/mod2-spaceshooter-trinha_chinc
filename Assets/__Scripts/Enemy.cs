@@ -22,6 +22,17 @@ public class Enemy : MonoBehaviour
     void Awake()
     {                                                            // c
         bndCheck = GetComponent<BoundsCheck>();
+
+        string enemyName = gameObject.name;
+        switch (enemyName)
+        {
+            case "enemy_0": score = 100; break;
+            case "enemy_1": score = 150; break;
+            case "enemy_2": score = 200; break;
+            case "enemy_3": score = 250; break;
+            case "enemy_4": score = 300; break;
+            default: score = 100; break; // Default score
+        }
     }
 
     // This is a Property: A method that acts like a field
@@ -75,6 +86,7 @@ public class Enemy : MonoBehaviour
                     if (!calledShipDestroyed)
                     {
                         calledShipDestroyed = true;
+                        Main.addScore(score);
                         Main.SHIP_DESTROYED(this);
                     }
                     // Destroy this Enemy
