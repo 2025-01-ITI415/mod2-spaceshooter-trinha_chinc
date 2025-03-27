@@ -139,6 +139,12 @@ public class Weapon : MonoBehaviour
                 p = MakeProjectile();
                 p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back);
                 p.vel = p.transform.rotation * vel;
+                p = MakeProjectile();
+                p.transform.rotation = Quaternion.AngleAxis(20, Vector3.back);
+                p.vel = p.transform.rotation * vel;
+                p = MakeProjectile();
+                p.transform.rotation = Quaternion.AngleAxis(-20, Vector3.back);
+                p.vel = p.transform.rotation * vel;
                 break;
             case eWeaponType.phaser:
                 def.damageOnHit = 4;
