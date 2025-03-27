@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Hero : MonoBehaviour
 {
@@ -15,6 +17,13 @@ public class Hero : MonoBehaviour
     public GameObject projectilePrefab;
     public float projectileSpeed = 40;
     public Weapon[] weapons;
+
+
+
+    //ADDED
+    public TMP_Text weaponText;
+    public TMP_Text shieldText;
+
 
     [Header("Dynamic")]
     [Range(0, 4)]
@@ -74,9 +83,32 @@ public class Hero : MonoBehaviour
             fireEvent();
         }
 
+        // Update Weapon Info
+        UpdateWeaponInfo();
+
+        // Update Shield Info
+        UpdateShieldInfo();
+
     }
 
 
+
+    void UpdateWeaponInfo()
+    {
+        string weaponInfo = "Weapon: " + weapons[0].type.ToString();  // Show the weapon type
+        int weaponStack = GetWeaponStackCount(weapons[0].type);      // Get the stack count for the current weapon
+        weaponInfo += " x" + weaponStack;  // Append stack count
+        weaponText.text = weaponInfo;  // Set TMP text component
+
+        // You can modify this part to handle multiple weapons, if you need more than one display.
+    }
+
+    // Update the shield info
+    void UpdateShieldInfo()
+    {
+        string shieldInfo = "Shield: " + shieldLevel.ToString();  // Display shield amount
+        shieldText.text = shieldInfo;  // Set TMP text component
+    }
     //void TempFire()
     //{
     //    GameObject projGO = Instantiate<GameObject>(projectilePrefab);
@@ -91,6 +123,19 @@ public class Hero : MonoBehaviour
 
     //}
 
+
+    int GetWeaponStackCount(eWeaponType weaponType)
+    {
+        int count = 0;
+        foreach (Weapon weapon in weapons)
+        {
+            if (weapon.type == weaponType)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
     void OnTriggerEnter(Collider other)
     {
         Transform rootT = other.gameObject.transform.root;                    // a
@@ -153,7 +198,7 @@ public class Hero : MonoBehaviour
     /// <summary>
     /// Sets the type of all Weapon slots to none
     /// </summary>
-    void ClearWeapons()
+    public void ClearWeapons()
     {
         foreach (Weapon w in weapons)
         {
