@@ -9,6 +9,9 @@ public class Main : MonoBehaviour
     static private Main S;                        // A private singleton for Main
     static private Dictionary<eWeaponType, WeaponDefinition> WEAP_DICT;
 
+    static private int totalScore; // tracks the score
+
+
 
     [Header("Inscribed")]
     public bool spawnEnemies = true;
@@ -44,6 +47,18 @@ public class Main : MonoBehaviour
 
     }
 
+    static public void addScore(int points)
+    {
+        totalScore += points; // adds points to total score
+    }
+
+    static public int getScore()
+    {
+        return totalScore; //return total score
+    }
+
+    
+
     public void SpawnEnemy()
     {
         // If spawnEnemies is false, skip to the next invoke of SpawnEnemy()
@@ -75,22 +90,26 @@ public class Main : MonoBehaviour
         Invoke(nameof(SpawnEnemy), 1f / enemySpawnPerSecond);                // g
     }
 
-    void DelayedRestart()
-    {                                                   // c
-                                                        // Invoke the Restart() method in gameRestartDelay seconds
-        Invoke(nameof(Restart), gameRestartDelay);
-    }
+   // void DelayedRestart()
+   // {                                                   // c
+   //                                                     // Invoke the Restart() method in gameRestartDelay seconds
+   //     Invoke(nameof(Restart), gameRestartDelay);
+    //}
 
-    void Restart()
-    {
+    //void Restart()
+    //{
         // Reload __Scene_0 to restart the game
         // "__Scene_0" below starts with 2 underscores and ends with a zero.
-        SceneManager.LoadScene("__Scene_0");                               // d
-    }
+    //    SceneManager.LoadScene("__Scene_0");                               // d
+    //}
 
     static public void HERO_DIED()
     {
-        S.DelayedRestart();                                                  // b
+        GameOverManager gameOverManager = FindObjectOfType<GameOverManager>();
+        if (gameOverManager != null)
+        {
+            gameOverManager.ShowGameOverScreen(totalScore); // totalScore is the score you want to show
+        }                                                  
     }
 
     /// <summary>
