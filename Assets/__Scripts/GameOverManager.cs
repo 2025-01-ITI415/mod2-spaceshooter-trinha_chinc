@@ -22,5 +22,6 @@ public class GameOverManager : MonoBehaviour
 
         // Update the score text on the game over screen
         scoreText.text = "Final Score: " + score.ToString();
+        Time.timeScale = 0;
     }
 }

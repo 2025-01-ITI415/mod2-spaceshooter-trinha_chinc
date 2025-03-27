@@ -1096,6 +1096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1537399031694887065, guid: b7360877b79191c40ba87b49d2742955, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9107742601233790075, guid: b7360877b79191c40ba87b49d2742955, type: 3}
       propertyPath: m_LocalPosition.x
       value: -68.3607
