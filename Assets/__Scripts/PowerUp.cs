@@ -21,6 +21,13 @@ public class PowerUp : MonoBehaviour
     public Vector3 rotPerSecond;  // Euler rotation speed for PowerCube 
     public float birthTime;     // The Time.time this was instantiated
 
+
+    //ADDED
+    public float duration = 10f; // Default to 10 seconds unless overridden
+
+
+
+
     private Rigidbody rigid;
     private BoundsCheck bndCheck;
     private Material cubeMat;
