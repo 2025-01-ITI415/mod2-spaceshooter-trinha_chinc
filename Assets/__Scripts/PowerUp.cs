@@ -21,6 +21,12 @@ public class PowerUp : MonoBehaviour
     public Vector3 rotPerSecond;  // Euler rotation speed for PowerCube 
     public float birthTime;     // The Time.time this was instantiated
 
+    // AudioManager audioManager;
+
+    // private void Awake(){
+    //     audioManager = GameObject.FindGameObjectsWithTag("Audio").getComponent<AudioManager>();
+    // }
+// audioManager.PlaySFX(audioManager.powerUp);
 
     //ADDED
     public float duration = 10f; // Default to 10 seconds unless overridden
