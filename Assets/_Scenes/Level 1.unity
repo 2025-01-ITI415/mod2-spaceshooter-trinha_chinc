@@ -524,6 +524,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62d638714b9741da967a5c76ca7f8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &888036789 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9150509251346567082, guid: 7e442b27e0d9f9e449f4f937e03ce22c, type: 3}
+  m_PrefabInstance: {fileID: 4133085894353806220}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebd7b0f08a2676478b2ecbab9183364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &930863980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1243,14 @@ PrefabInstance:
     - target: {fileID: 3997775309173139009, guid: 7e442b27e0d9f9e449f4f937e03ce22c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 888036789}
+    - target: {fileID: 3997775309173139009, guid: 7e442b27e0d9f9e449f4f937e03ce22c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997775309173139009, guid: 7e442b27e0d9f9e449f4f937e03ce22c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4441473664797766271, guid: 7e442b27e0d9f9e449f4f937e03ce22c, type: 3}
       propertyPath: m_Pivot.x
@@ -1325,5 +1344,5 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 930863981}
-  - {fileID: 4133085894353806220}
   - {fileID: 1078748545}
+  - {fileID: 4133085894353806220}
