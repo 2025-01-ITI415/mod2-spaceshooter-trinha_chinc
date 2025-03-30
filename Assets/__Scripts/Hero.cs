@@ -25,6 +25,13 @@ public class Hero : MonoBehaviour
     public TMP_Text shieldText;
 
 
+    AudioManager audioManager;
+
+    // private void Awake(){
+        
+    // }
+// audioManager.PlaySFX(audioManager.powerUp);
+
     [Header("Dynamic")]
     [Range(0, 4)]
     [SerializeField]                                        // b
@@ -41,6 +48,8 @@ public class Hero : MonoBehaviour
 
     void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         if (S == null)
         {
             S = this; // Set the Singleton only if it’s null                  // c
@@ -81,6 +90,7 @@ public class Hero : MonoBehaviour
         if (Input.GetAxis("Jump") == 1 && fireEvent != null)
         {
             fireEvent();
+            audioManager.PlaySFX(audioManager.shoot);
         }
 
         // Update Weapon Info
@@ -151,12 +161,14 @@ public class Hero : MonoBehaviour
 
         if (enemy != null)
         {  // If the shield was triggered by an enemy
+            audioManager.PlaySFX(audioManager.damaged);
             shieldLevel--;        // Decrease the level of the shield by 1
             Destroy(go);          // … and Destroy the enemy                  // f
         }
         else if (pUp != null)
         {
             AbsorbPowerUp(pUp);
+            audioManager.PlaySFX(audioManager.powerup);
         }
         else
         {
