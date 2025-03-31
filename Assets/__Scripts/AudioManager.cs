@@ -21,7 +21,10 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlaySFX(AudioClip clip){
-        SFXSource.PlayOneShot(clip);
+        if (!SFXSource.isPlaying) // Prevents overlapping sounds
+        {
+            SFXSource.PlayOneShot(clip);
+        }
     }
 
     // public void Button3(){
