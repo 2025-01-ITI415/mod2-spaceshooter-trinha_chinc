@@ -12,5 +12,6 @@ public void QuitGame(){
     Debug.Log("Quit");
     Application.Quit();
 }
+
 }
     
